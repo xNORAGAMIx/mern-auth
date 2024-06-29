@@ -1,10 +1,15 @@
-export const signUp = (req, res) => {
+import { User } from "../model/userModel.js";
+
+export const signUp = async (req, res) => {
   const { username, email, password } = req.body;
-  res.json({
-    data: {
-      username,
-      email,
-      password,
-    },
+
+  const user = await User.create({
+    username,
+    email,
+    password,
+  });
+
+  res.status(201).json({
+    data: user
   });
 };
