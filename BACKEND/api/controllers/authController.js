@@ -73,3 +73,37 @@ export const signIn = asyncHandler(async (req, res) => {
     data: rest,
   });
 });
+
+export const google = asyncHandler(async (req, res) => {
+  /**Fetch the email and password from form */
+  const { name, email, photo } = req.body;
+  /** Check if user exits in database*/
+  const validUser = await User.findOne({ email });
+
+  if (validUser) {
+    /**Create a token */
+    const token = jwt.sign({ id: validUser._id }, process.env.ACCESS_TOKEN);
+    /**destructure user and remove password from result */
+    const { password: hashPassword, ...rest } = validUser._doc;
+    /**Add token to cookie */
+    res.cookie("access_token", token, { httpOnly: true }).status(200).json({
+      data: rest,
+    });
+  } else {
+    const genPassword = Math.random().toString(36).slice(-8);
+    const hashPassword = await bcrypt.hash(genPassword, 10);
+    const newUser = await User.create({
+      username:
+        name.split(" ").join("").toLowerCase() +
+        Math.floor(Math.random() * 10000).toString(),
+      email,
+      password: hashPassword,
+      profilePicture: photo,
+    });
+    const token = jwt.sign({ id: newUser._id }, process.env.ACCESS_TOKEN);
+    const { password: hashPasswordTwo, ...rest } = newUser._doc;
+    res.cookie("access_token", token, { httpOnly: true }).status(200).json({
+      data: rest,
+    });
+  }
+});
