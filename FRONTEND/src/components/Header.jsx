@@ -18,7 +18,7 @@ const Header = () => {
           </NavLink>
           <NavLink to="/profile">
             {currentUser ? (
-              <img src={currentUser.profilePicture} alt="Profile Picture" className="h-7 w-7 rounded-full object-cover"/>
+              <img src={currentUser.data.profilePicture} alt="DP" className="h-7 w-7 rounded-full object-cover"/>
             ) : (
               <li>Sign In</li>
             )}
