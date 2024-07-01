@@ -9,7 +9,7 @@ export const getAllusers = async (req, res) => {
   });
 };
 
-export const updateUser = asyncHandler(async(req, res) => {
+export const updateUser = asyncHandler(async (req, res) => {
   if (req.user.id !== req.params.id) {
     res.status(401);
     throw new Error("You can only update your account!");
@@ -36,5 +36,18 @@ export const updateUser = asyncHandler(async(req, res) => {
   const { password, ...rest } = updatedUser._doc;
   res.status(200).json({
     data: rest,
+  });
+});
+
+export const deleteUser = asyncHandler(async (req, res) => {
+  if (req.user.id !== req.params.id) {
+    res.status(401);
+    throw new Error("You can only delete your account!");
+  }
+
+  await User.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({
+    message: "User has been deleted",
   });
 });
