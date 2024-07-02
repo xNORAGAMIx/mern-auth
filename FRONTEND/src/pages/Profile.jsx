@@ -34,7 +34,6 @@ const Profile = () => {
     if (image) {
       hanldeFileUpload(image);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [image]);
 
   const hanldeFileUpload = async (image) => {
@@ -113,7 +112,7 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       await fetch(
-        "https://mern-auth-backend-cyan.vercel.app//api/auth/signout",
+        "https://mern-auth-backend-cyan.vercel.app/api/auth/signout",
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
