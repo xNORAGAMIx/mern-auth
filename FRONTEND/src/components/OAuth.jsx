@@ -15,11 +15,7 @@ const OAuth = () => {
       console.log(result);
 
       const res = await fetch(
-<<<<<<< HEAD
-        "https://mern-auth-backend-three.vercel.app/api/auth/google",
-=======
         "https://mern-auth-backend-cyan.vercel.app/api/auth/google",
->>>>>>> refs/remotes/origin/main
         {
           method: "POST",
           headers: {

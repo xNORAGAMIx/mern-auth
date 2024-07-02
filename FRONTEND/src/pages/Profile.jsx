@@ -120,11 +120,7 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       await fetch(
-<<<<<<< HEAD
-        "https://mern-auth-backend-three.vercel.app/api/auth/signout",
-=======
         "https://mern-auth-backend-cyan.vercel.app//api/auth/signout",
->>>>>>> refs/remotes/origin/main
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
