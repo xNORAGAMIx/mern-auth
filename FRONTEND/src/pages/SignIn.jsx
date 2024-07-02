@@ -25,13 +25,17 @@ const SignIn = () => {
     // setError(null);
 
     dispatch(signInStart());
-    const response = await fetch("/api/auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://mern-auth-backend-sepia.vercel.app/api/auth/signin",
+      {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await response.json();
     // setLoading(false);
 
@@ -44,13 +48,13 @@ const SignIn = () => {
       });
       return;
     }
-    toast.success(`Welcome! ${(data.data.username).toUpperCase()}`, {
+    toast.success(`Welcome! ${data.data.username.toUpperCase()}`, {
       position: "top-right",
     });
     dispatch(signInSuccess(data));
     setTimeout(() => {
       navigate("/");
-    },2000);
+    }, 2000);
   };
   return (
     <div className="mx-auto max-w-sm m-40 rounded-lg bg-gradient-to-tr from-cyan-400 to-red-500 p-1 shadow-2xl shadow-violet-800">

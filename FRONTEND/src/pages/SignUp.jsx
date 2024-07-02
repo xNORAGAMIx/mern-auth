@@ -15,13 +15,17 @@ const SignUp = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://mern-auth-backend-sepia.vercel.app/api/auth/signup",
+      {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await response.json();
     setLoading(false);
     console.log(data);
@@ -33,7 +37,9 @@ const SignUp = () => {
   return (
     <div className="mx-auto max-w-sm m-40 rounded-lg bg-gradient-to-tr from-cyan-400 to-red-500 p-1 shadow-2xl  shadow-violet-800">
       <div className="bg-white p-6 rounded-lg shadow-2xl">
-        <h1 className="text-3xl text-center font-semibold my-7 uppercase bg-gradient-to-r from-teal-300 to-indigo-600 bg-clip-text text-transparent">Sign Up</h1>
+        <h1 className="text-3xl text-center font-semibold my-7 uppercase bg-gradient-to-r from-teal-300 to-indigo-600 bg-clip-text text-transparent">
+          Sign Up
+        </h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="text"

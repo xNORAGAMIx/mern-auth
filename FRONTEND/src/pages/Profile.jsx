@@ -67,13 +67,17 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(updateUserStart());
-    const res = await fetch(`/api/user/update/${currentUser.data._id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const res = await fetch(
+      `https://mern-auth-backend-sepia.vercel.app/api/user/update/${currentUser.data._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
     const data = await res.json();
     console.log(data);
     if (data.title) {
@@ -84,14 +88,19 @@ const Profile = () => {
     toast.success(`Updated Successfully`, {
       position: "top-right",
     });
-    setUpdateSuccess(true);
   };
 
   const handleDeleteAccount = async () => {
     dispatch(deleteUserStart());
-    const res = await fetch(`api/user/delete/${currentUser.data._id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://mern-auth-backend-sepia.vercel.app/api/user/delete/${currentUser.data._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
     const data = await res.json();
     if (data.title) {
       dispatch(deleteUserFailure(data.message));
@@ -102,7 +111,14 @@ const Profile = () => {
 
   const handleSignOut = async () => {
     try {
-      await fetch("api/auth/signout");
+      await fetch(
+        "https://mern-auth-backend-sepia.vercel.app/api/auth/signout",
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
       dispatch(signOut());
     } catch (err) {
       console.log(error);
@@ -111,7 +127,9 @@ const Profile = () => {
 
   return (
     <div className="p-3 max-w-sm m-40 mx-auto bg-white rounded-3xl shadow-2xl shadow-gray-950  border-4 border-purple-600">
-      <h1 className="text-3xl font-semibold text-center my-7">{(currentUser.data.username)}</h1>
+      <h1 className="text-3xl font-semibold text-center my-7">
+        {currentUser.data.username}
+      </h1>
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <input
           type="file"
@@ -132,7 +150,9 @@ const Profile = () => {
           ) : imagePercent > 0 && imagePercent < 100 ? (
             <span className="text-slate-700">{`Uploading : ${imagePercent}%`}</span>
           ) : imagePercent === 100 ? (
-            <span className="text-green-700 font-semibold">Image Uploaded Successfully</span>
+            <span className="text-green-700 font-semibold">
+              Image Uploaded Successfully
+            </span>
           ) : (
             ""
           )}
@@ -174,7 +194,10 @@ const Profile = () => {
         >
           Delete Account
         </span>
-        <span onClick={handleSignOut} className="text-red-700 font-semibold cursor-pointer">
+        <span
+          onClick={handleSignOut}
+          className="text-red-700 font-semibold cursor-pointer"
+        >
           Sign Out
         </span>
       </div>
