@@ -74,6 +74,7 @@ export const signIn = asyncHandler(async (req, res) => {
       sameSite: "none",
       httpOnly: true,
       secure: true,
+      path: "/",
     })
     .status(200)
     .json({
@@ -98,6 +99,7 @@ export const google = asyncHandler(async (req, res) => {
         sameSite: "none",
         httpOnly: true,
         secure: true,
+        path: "/",
       })
       .status(200)
       .json({
@@ -121,6 +123,7 @@ export const google = asyncHandler(async (req, res) => {
         sameSite: "none",
         httpOnly: true,
         secure: true,
+        path: "/",
       })
       .status(200)
       .json({
