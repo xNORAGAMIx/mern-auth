@@ -17,6 +17,7 @@ const OAuth = () => {
       const res = await fetch(
         "https://mern-auth-backend-xi.vercel.app/api/auth/google",
         {
+          credentials: "include",
           method: "POST",
           headers: {
             "Access-Control-Allow-Origin": "*",

@@ -71,6 +71,7 @@ const Profile = () => {
     const res = await fetch(
       `https://mern-auth-backend-xi.vercel.app/api/user/update/${currentUser.data._id}`,
       {
+        credentials: "include",
         method: "POST",
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -96,6 +97,7 @@ const Profile = () => {
     const res = await fetch(
       `https://mern-auth-backend-xi.vercel.app/api/user/delete/${currentUser.data._id}`,
       {
+        credentials: "include",
         method: "DELETE",
         headers: {
           "Access-Control-Allow-Origin": "*",

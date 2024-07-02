@@ -18,6 +18,7 @@ const SignUp = () => {
     const response = await fetch(
       "https://mern-auth-backend-xi.vercel.app/api/auth/signup",
       {
+        credentials: "include",
         method: "POST",
         headers: {
           "Access-Control-Allow-Origin": "*",
