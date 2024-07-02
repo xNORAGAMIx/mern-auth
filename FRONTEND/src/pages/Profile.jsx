@@ -121,7 +121,7 @@ const Profile = () => {
       );
       dispatch(signOut());
     } catch (err) {
-      console.log(error);
+      console.log(err);
     }
   };
 
