@@ -34,6 +34,7 @@ const Profile = () => {
     if (image) {
       hanldeFileUpload(image);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [image]);
 
   const hanldeFileUpload = async (image) => {
