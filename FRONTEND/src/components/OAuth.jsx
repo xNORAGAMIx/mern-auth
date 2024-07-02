@@ -15,7 +15,7 @@ const OAuth = () => {
       console.log(result);
 
       const res = await fetch(
-        "https://mern-auth-backend-sepia.vercel.app/api/auth/google",
+        "https://mern-auth-backend-three.vercel.app/api/auth/google",
         {
           method: "POST",
           headers: {

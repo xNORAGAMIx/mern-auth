@@ -68,7 +68,7 @@ const Profile = () => {
     e.preventDefault();
     dispatch(updateUserStart());
     const res = await fetch(
-      `https://mern-auth-backend-sepia.vercel.app/api/user/update/${currentUser.data._id}`,
+      `https://mern-auth-backend-three.vercel.app/api/user/update/${currentUser.data._id}`,
       {
         method: "POST",
         headers: {
@@ -93,7 +93,7 @@ const Profile = () => {
   const handleDeleteAccount = async () => {
     dispatch(deleteUserStart());
     const res = await fetch(
-      `https://mern-auth-backend-sepia.vercel.app/api/user/delete/${currentUser.data._id}`,
+      `https://mern-auth-backend-three.vercel.app/api/user/delete/${currentUser.data._id}`,
       {
         method: "DELETE",
         headers: {
@@ -112,7 +112,7 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       await fetch(
-        "https://mern-auth-backend-sepia.vercel.app/api/auth/signout",
+        "https://mern-auth-backend-three.vercel.app/api/auth/signout",
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
