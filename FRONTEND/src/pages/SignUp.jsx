@@ -16,7 +16,11 @@ const SignUp = () => {
     setLoading(true);
     setError(null);
     const response = await fetch(
+<<<<<<< HEAD
       "https://mern-auth-backend-three.vercel.app/api/auth/signup",
+=======
+      "https://mern-auth-backend-cyan.vercel.app/api/auth/signup",
+>>>>>>> refs/remotes/origin/main
       {
         method: "POST",
         headers: {

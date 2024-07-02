@@ -16,7 +16,11 @@ const port = process.env.PORT || 5000;
 
 app.use(
   cors({
+<<<<<<< HEAD
     origin: ["https://mern-auth-frontend-rho.vercel.app"],
+=======
+    origin: ["https://mern-auth-frontend-five.vercel.app"],
+>>>>>>> refs/remotes/origin/main
     methods: ["POST", "GET", "DELETE"],
     credentials: true,
   })
