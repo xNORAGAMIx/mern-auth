@@ -16,7 +16,7 @@ const SignUp = () => {
     setLoading(true);
     setError(null);
     const response = await fetch(
-      "https://mern-auth-backend-sepia.vercel.app/api/auth/signup",
+      "https://mern-auth-backend-three.vercel.app/api/auth/signup",
       {
         method: "POST",
         headers: {
