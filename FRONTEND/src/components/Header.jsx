@@ -11,16 +11,28 @@ const Header = () => {
         </h1>
         <ul className="flex gap-4">
           <NavLink to="/">
-            <li className="text-white font-extrabold hover:opacity-90 uppercase">Home</li>
+            <li className="text-white font-extrabold hover:opacity-90 uppercase">
+              Home
+            </li>
           </NavLink>
           <NavLink to="/about">
-            <li className="text-white font-extrabold hover:opacity-90 uppercase">About</li>
+            <li className="text-white font-extrabold hover:opacity-90 uppercase">
+              About
+            </li>
           </NavLink>
           <NavLink to="/profile">
             {currentUser ? (
-              <img src={currentUser.data.profilePicture} alt="DP" className="h-7 w-7 rounded-full object-cover"/>
+              <div className="border-solid border-2 border-white rounded-full">
+                <img
+                  src={currentUser.data.profilePicture}
+                  alt="DP"
+                  className="h-7 w-7 rounded-full object-cover"
+                />
+              </div>
             ) : (
-              <li className="text-white font-extrabold hover:opacity-90 uppercase">Sign In</li>
+              <li className="text-white font-extrabold hover:opacity-90 uppercase">
+                Sign In
+              </li>
             )}
           </NavLink>
         </ul>

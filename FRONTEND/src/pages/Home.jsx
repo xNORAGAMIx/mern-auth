@@ -3,7 +3,7 @@ const Home = () => {
     <>
     <h1 className="font-extrabold uppercase text-4xl text-center mt-10 
     bg-gradient-to-r from-slate-700 to-gray-600 bg-clip-text text-transparent ">Authentication App Using MERN Stack!</h1>
-      <div className="flex flex-col gap 4 mx-auto max-w-5xl px-6 py-12 bg-gray-50 m-10 rounded-3xl shadow-lg shadow-slate-900">
+      <div className="flex flex-col gap 4 mx-auto max-w-5xl px-6 py-12 bg-transparent m-10 rounded-3xl shadow-lg">
         <div className="flex flex-col gap-4 px-4 py-6">
           <h2 className="font-semibold text-2xl">Overview</h2>
           <p className="text-xl px-6">
