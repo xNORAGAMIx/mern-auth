@@ -26,7 +26,7 @@ const SignIn = () => {
 
     dispatch(signInStart());
     const response = await fetch(
-      "https://mern-auth-backend-cyan.vercel.app/api/auth/signin",
+      "https://mern-auth-backend-xi.vercel.app/api/auth/signin",
       {
         method: "POST",
         headers: {

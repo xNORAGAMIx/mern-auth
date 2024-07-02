@@ -49,6 +49,7 @@ const Profile = () => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setImagePercent(Math.round(progress));
       },
+      // eslint-disable-next-line no-unused-vars
       (error) => {
         setImageError(true);
       },
@@ -68,7 +69,7 @@ const Profile = () => {
     e.preventDefault();
     dispatch(updateUserStart());
     const res = await fetch(
-      `https://mern-auth-backend-cyan.vercel.app/api/user/update/${currentUser.data._id}`,
+      `https://mern-auth-backend-xi.vercel.app/api/user/update/${currentUser.data._id}`,
       {
         method: "POST",
         headers: {
@@ -93,7 +94,7 @@ const Profile = () => {
   const handleDeleteAccount = async () => {
     dispatch(deleteUserStart());
     const res = await fetch(
-      `https://mern-auth-backend-cyan.vercel.app/api/user/delete/${currentUser.data._id}`,
+      `https://mern-auth-backend-xi.vercel.app/api/user/delete/${currentUser.data._id}`,
       {
         method: "DELETE",
         headers: {
@@ -112,7 +113,7 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       await fetch(
-        "https://mern-auth-backend-cyan.vercel.app/api/auth/signout",
+        "https://mern-auth-backend-xi.vercel.app/api/auth/signout",
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
