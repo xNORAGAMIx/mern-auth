@@ -28,48 +28,51 @@ const SignUp = () => {
     if (data.title) {
       setError(data.title);
     }
-    navigate('/sign-in');
+    navigate("/sign-in");
   };
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl text-center font-semibold my-7">Sign Up</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Username"
-          id="username"
-          onChange={handleChange}
-          className="bg-slate-200 p-3 rounded-lg"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          id="email"
-          onChange={handleChange}
-          className="bg-slate-200 p-3 rounded-lg"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          id="password"
-          onChange={handleChange}
-          className="bg-slate-200 p-3 rounded-lg"
-        />
-        <button
-          disabled={loading}
-          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
-        >
-          {loading ? "Loading..." : "Sign Up"}
-        </button>
-        <OAuth />
-      </form>
-      <div className="flex gap-3 mt-5">
-        <p>Have an account?</p>
-        <Link to="/sign-in">
-          <span className="text-blue-600">Sign In</span>
-        </Link>
+    <div className="mx-auto max-w-sm m-40 rounded-lg bg-gradient-to-tr from-cyan-400 to-red-500 p-1 shadow-2xl  shadow-violet-800">
+      <div className="bg-white p-6 rounded-lg shadow-2xl">
+        <h1 className="text-3xl text-center font-semibold my-7 uppercase bg-gradient-to-r from-teal-300 to-indigo-600 bg-clip-text text-transparent">Sign Up</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Username"
+            id="username"
+            onChange={handleChange}
+            className="bg-slate-200 p-3 mx-6 rounded-lg shadow-xl"
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            onChange={handleChange}
+            className="bg-slate-200 p-3 mx-6 rounded-lg shadow-xl"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            id="password"
+            onChange={handleChange}
+            className="bg-slate-200 p-3  mx-6 rounded-lg shadow-xl"
+          />
+          <button
+            disabled={loading}
+            className="bg-gradient-to-r from-red-500 to-yellow-400 hover:from-yellow-400 hover:to-red-500
+            text-white font-extrabold p-3 mx-6 rounded-lg uppercase disabled:opacity-80 shadow-xl"
+          >
+            {loading ? "Loading..." : "Sign Up"}
+          </button>
+          <OAuth />
+        </form>
+        <div className="flex gap-3 mt-6 mx-7 mb-3">
+          <p>Have an account?</p>
+          <Link to="/sign-in">
+            <span className="text-blue-600">Sign In</span>
+          </Link>
+        </div>
+        <p className="text-red-700">{error && "Something went wrong!"}</p>
       </div>
-      <p className="text-red-700">{error && "Something went wrong!"}</p>
     </div>
   );
 };

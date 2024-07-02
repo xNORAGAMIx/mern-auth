@@ -10,18 +10,22 @@ dotenv.config();
 
 connectDB();
 
-
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/", (req, res) => {
+  res.json({
+    msg: "Hello from Server",
+  });
+});
+
 app.use("/api/user", userRoute);
 app.use("/api/auth", authUserRoute);
 
 app.use(errorHandler);
-
 
 app.listen(port, () => {
   console.log(`Server started at ${port}`);

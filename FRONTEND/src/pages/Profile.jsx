@@ -17,6 +17,8 @@ import {
   deleteUserSuccess,
   signOut,
 } from "../redux/user/userSlice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Profile = () => {
   const fileRef = useRef(null);
@@ -24,7 +26,6 @@ const Profile = () => {
   const [imagePercent, setImagePercent] = useState(0);
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
-  const [updateSuccess, setUpdateSuccess] = useState(false);
   const dispatch = useDispatch();
 
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -80,6 +81,9 @@ const Profile = () => {
       return;
     }
     dispatch(updateUserSuccess(data));
+    toast.success(`Updated Successfully`, {
+      position: "top-right",
+    });
     setUpdateSuccess(true);
   };
 
@@ -106,9 +110,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="p-3 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7 ">Profile</h1>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+    <div className="p-3 max-w-sm m-40 mx-auto bg-white rounded-3xl shadow-2xl shadow-gray-950  border-4 border-purple-600">
+      <h1 className="text-3xl font-semibold text-center my-7">{(currentUser.data.username)}</h1>
+      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <input
           type="file"
           ref={fileRef}
@@ -120,7 +124,7 @@ const Profile = () => {
           onClick={() => fileRef.current.click()}
           src={formData.profilePicture || currentUser.data.profilePicture}
           alt="Profile Picture"
-          className="h-24 w-24 self-center rounded-full cursor-pointer object-cover mt-2"
+          className="h-30 w-28 self-center rounded-full cursor-pointer object-cover mt-2 shadow-lg shadow-gray-900 border-b-4"
         />
         <p className="text-sm self-center">
           {imageError ? (
@@ -128,7 +132,7 @@ const Profile = () => {
           ) : imagePercent > 0 && imagePercent < 100 ? (
             <span className="text-slate-700">{`Uploading : ${imagePercent}%`}</span>
           ) : imagePercent === 100 ? (
-            <span className="text-green-700">Image Uploaded Successfully</span>
+            <span className="text-green-700 font-semibold">Image Uploaded Successfully</span>
           ) : (
             ""
           )}
@@ -139,7 +143,7 @@ const Profile = () => {
           id="username"
           placeholder="Username"
           onChange={handleChange}
-          className="bg-slate-200 rounded-lg p-3 "
+          className="bg-slate-200 rounded-lg p-3 mx-10 shadow-lg"
         />
         <input
           defaultValue={currentUser.data.email}
@@ -147,38 +151,36 @@ const Profile = () => {
           id="email"
           placeholder="Email"
           onChange={handleChange}
-          className="bg-slate-200 rounded-lg p-3 "
+          className="bg-slate-200 rounded-lg p-3 mx-10 shadow-lg"
         />
         <input
           type="password"
           id="password"
           placeholder="Password"
           onChange={handleChange}
-          className="bg-slate-200 rounded-lg p-3 "
+          className="bg-slate-200 rounded-lg p-3 mx-10 shadow-lg"
         />
         <button
           disabled={loading}
-          className="uppercase bg-slate-700 p-3 rounded-lg text-white hover:opacity-95 disabled:opacity-80"
+          className="bg-gradient-to-r from-red-500 to-yellow-400 hover:from-yellow-400 hover:to-red-500 p-3 rounded-lg text-white hover:opacity-95 disabled:opacity-80 mx-10 font-extrabold uppercase"
         >
           {loading ? "Loading..." : "Update"}
         </button>
       </form>
-      <div className="flex justify-between mt-5">
+      <div className="flex justify-between mt-5 mx-10">
         <span
           onClick={handleDeleteAccount}
-          className="text-red-700 cursor-pointer"
+          className="text-red-700 cursor-pointer font-semibold"
         >
           Delete Account
         </span>
-        <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
+        <span onClick={handleSignOut} className="text-red-700 font-semibold cursor-pointer">
           Sign Out
         </span>
       </div>
+      <ToastContainer />
       <p className="text-red-700 mt-5">
         {error ? error || "Something went wrong!" : ""}
-      </p>
-      <p className="text-green-700 mt-5">
-        {updateSuccess && "User updated successfully!"}
       </p>
     </div>
   );
